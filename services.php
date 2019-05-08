@@ -59,6 +59,46 @@
 
 								<!-- Content -->
 									<section id="content">
+
+									<?php
+										$query = "SELECT p.productID, p.productName, count(ph.productID) AS Visit FROM product p LEFT JOIN product_access_history ph ON p.productID = ph.productID GROUP BY p.productID, p.productName ORDER BY Visit DESC";
+
+										$json_db = file_get_contents('db.json');
+										$db = json_decode($json_db, true);
+
+										$db_servername = $db['servername'];
+										$db_username = $db['username'];
+										$db_password = $db['password'];
+										$db_dbname = $db['dbname'];
+
+										$conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
+										
+										if ($conn->connect_error) {
+											die("Could not connect database.".$conn->connect_error);
+										}
+
+										$result = $conn->query($query);
+
+										$jarr = "[['Services', 'Visit']";
+
+										if ($result->num_rows > 0) {
+
+											while($row = $result->fetch_assoc()) {
+												$jarr = $jarr.",['".$row['productName']."',".$row['Visit']."]";
+											}
+										}
+
+										$jarr = $jarr."]";
+
+										$conn->close();
+									?>
+
+									<h3>Most Popular Services</h3>
+									<div id="piechart" class="col-6"></div>
+
+									<hr>
+										
+									<div class="col-3">
 									<h3>Services Visited Statistics</h3>
 									<h4>Recent 5 visited pages.</h4>
 									<?php
@@ -68,9 +108,10 @@
 											echo $v."<br>";
 										}
 									?>
-									
-									<hr />
 
+									</div>
+									
+									<div class="col-3">
 									<h4>Most visited pages</h4>
 
 									<?php
@@ -81,7 +122,7 @@
 											echo $key."  - times visit: ".$v."<br>";
 										}
 									?>
-
+									</div>
 									</section>
 
 							</div>
@@ -104,6 +145,28 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script type="text/javascript">
+				// Load google charts
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+
+				var rawdata = <?php echo $jarr; ?>;
+
+				// Draw the chart and set the chart values
+				function drawChart() {
+				  var data = google.visualization.arrayToDataTable(rawdata);
+
+				  // Optional; add a title and set the width and height of the chart
+				  var options = {'height':400, backgroundColor:'transparent', legend:{textStyle: {color: 'white'}}};
+
+				  // Display the chart inside the <div> element with id="piechart"
+				  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+				  chart.draw(data, options);
+				}
+			</script>
+
 
 	</body>
 </html>

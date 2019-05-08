@@ -25,6 +25,16 @@
 		die("Could not connect database.".$conn->connect_error);
 	}
 
+	if($session_login==true){
+		$query_insert_history = "INSERT INTO product_access_history (productID, userID, timedate) VALUES ('$productID', '$session_userid', now())";
+		$result_insert_history = $conn->query($query_insert_history);
+		// if ($result_insert_history==true) {
+		// 	echo "<header class='major'><h2>Successful!<h2></header>";
+		// }else{
+		// 	echo "<header class='major'><h2>Failed! ".$conn->error."</h2></header>";
+		// }
+	}
+
 	$query = "SELECT productID, productName, productDescription, productImage FROM product WHERE productID = '$productID'";
 
 	$result = $conn->query($query);
@@ -76,7 +86,6 @@
 	$result_review = $conn->query($query_review);
 
 	$conn->close();
-
 
 	$expire=time()+60*60*24*7;
 	$page_id=$productName;
@@ -267,12 +276,6 @@
 										</ul>
 									</div>
 								</form>
-							</section>
-
-							<section>
-								<ul class="actions">
-									<li><a href="#" class="button primary" onclick = "self.location=document.referrer;">Back</a></li>
-								</ul>
 							</section>
 
 <section class="col-12">
