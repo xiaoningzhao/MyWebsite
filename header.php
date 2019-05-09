@@ -40,7 +40,7 @@
 			<li><a href="user.php">User</a></li>
 			<?php 
 				if($session_login==true){
-					echo "<li>Welcome $session_name <a href='logout.php' class='button primary'>Sign Out</a></li>";
+					echo "<li>Welcome <b>$session_name</b> <a href='logout.php' class='button primary'>Sign Out</a></li>";
 				}else{
 					echo "<li><a href='login.php' class='button primary'>Sign In</a></li>";
 				}
