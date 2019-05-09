@@ -1,7 +1,7 @@
 	<?php
 		$query = "SELECT first_name, last_name, email, home_address, home_phone, cellphone from userinfo";
 
-		$json_db = file_get_contents('db.json');
+		$json_db = file_get_contents('../db.json');
 		$db = json_decode($json_db, true);
 
 		$db_servername = $db['servername'];

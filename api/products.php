@@ -2,7 +2,7 @@
 	header('Content-Type: application/json');
 	$query = "SELECT productID, productName, productDescription, productImage, price from product";
 
-	$json_db = file_get_contents('db.json');
+	$json_db = file_get_contents('../db.json');
 	$db = json_decode($json_db, true);
 
 	$db_servername = $db['servername'];

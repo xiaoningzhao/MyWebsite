@@ -134,7 +134,8 @@
 									<li><a href="user.php" class="button primary">Back</a></li>
 								</ul>
 							</section>
-
+					</div>
+				</div>
 			<?php 
 				include 'footer.php';
 			?>

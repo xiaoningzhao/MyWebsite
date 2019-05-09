@@ -99,15 +99,14 @@
 							<section>
 								<h3>List All Users</h3>
 								<form method="post" action="ListUsers.php">
-											<ul class="actions">
-												<li><input type="submit" value="List" class="primary" /></li>
-												<li><input type="reset" value="Reset" /></li>
-											</ul>
-										</div>
-									</div>
+									<ul class="actions">
+										<li><input type="submit" value="List" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
 								</form>
 							</section>
-
+					</div>
+				</div>
 			<?php 
 				include 'footer.php';
 			?>

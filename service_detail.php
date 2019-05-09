@@ -159,7 +159,6 @@
 							<h2><?php echo $productName; ?></h2>
 							<p></p>
 						</header>
-						<div class="row gtr-150">
 						<!-- Content -->
 							<section id="content">
 								<?php
@@ -278,34 +277,34 @@
 								</form>
 							</section>
 
-<section class="col-12">
-	<h4>Reviews</h4>
+							<section class="col-12">
+								<h4>Reviews</h4>
 
-	<?php 
-		if ($result_review->num_rows > 0) {
-			while($row = $result_review->fetch_assoc()) {
+								<?php 
+									if ($result_review->num_rows > 0) {
+										while($row = $result_review->fetch_assoc()) {
 
-				$user_id = $row['userID'];
+											$user_id = $row['userID'];
 
-				if($row['userID']==null){
-					$user_id = "Anonymous";
-				}
+											if($row['userID']==null){
+												$user_id = "Anonymous";
+											}
 
-				echo "<h5>From user ".$user_id.". at ".$row['timedate']."</h5>";
+											echo "<h5>From user ".$user_id.". at ".$row['timedate']."</h5>";
 
-				for($i=0; $i<round($row['rating']); $i++){
-					echo "<span class='fa fa-star checked'></span>";
-				}
-				for($i=5; $i>round($row['rating']); $i--){
-					echo "<span class='fa fa-star'></span>";
-				}
-				echo "<p>Review: ".$row['review']."</p>";
-				echo "<hr>";
-			}
-		}
+											for($i=0; $i<round($row['rating']); $i++){
+												echo "<span class='fa fa-star checked'></span>";
+											}
+											for($i=5; $i>round($row['rating']); $i--){
+												echo "<span class='fa fa-star'></span>";
+											}
+											echo "<p>Review: ".$row['review']."</p>";
+											echo "<hr>";
+										}
+									}
 
-	?>
-</section>
+								?>
+							</section>
 
 
 					</div>
