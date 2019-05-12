@@ -1,6 +1,9 @@
 <?php
+	extract($_GET);
+
 	header('Content-Type: application/json');
-	$query = "SELECT p.productID, p.productName, count(ph.productID) AS Visit FROM product p LEFT JOIN product_access_history ph ON p.productID = ph.productID GROUP BY p.productID, p.productName ORDER BY Visit DESC";
+
+	$query = "INSERT INTO product_access_history (productID, userID, timedate) VALUES ('$productID', '$userID', now())";
 
 	$json_db = file_get_contents('../db.json');
 	$db = json_decode($json_db, true);
@@ -18,17 +21,15 @@
 
 	$result = $conn->query($query);
 
-	$jarr = array();
 
-	if ($result->num_rows > 0) {
-
-		while($row = $result->fetch_assoc()) {
-			array_push($jarr,$row);
-		}
+	if ($result==true) {
+		$jarr = array("result" => true);
+		echo json_encode($jarr);
+	}else{
+		$jarr = array("result" => false);
+		echo json_encode($jarr);		
 	}
 
 	$conn->close();
-
-	echo json_encode($jarr);
 
 ?>

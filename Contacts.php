@@ -32,7 +32,7 @@
 								<?php
 									extract($_POST);
 
-									if(($name == "admin") && ($password =="admin")){
+									if($session_login === true){
 										$contact=file("./contacts.txt");
 										foreach ($contact as $line)
 										{
@@ -45,9 +45,7 @@
 										}
 										die();
 									}else{
-										$url="error.php";
-										echo "<script>window.location.href='$url';</script>";
-										die();
+										echo "Please sign in to access contacts information";
 									}
 								?>
 								</h3>

@@ -101,7 +101,7 @@
 		$page = serialize($arr);
 		setcookie('recent_page',$page, $expire,"/");
 	}else{
-		$arr[] = $page_id;
+		$arr = array($page_id);
 		$page = serialize($arr);
 		setcookie('recent_page',$page, $expire,"/");
 	}
@@ -117,7 +117,7 @@
 		$page_visits = serialize($arr_visits);
 		setcookie('page_visits',$page_visits, $expire, "/");
 	}else{
-		$arr_visits[$page_id] = 1;
+		$arr_visits = array($page_id => 1);
 		$page_visits = serialize($arr_visits);
 		setcookie('page_visits', $page_visits, $expire, "/"); 
 	}
@@ -161,6 +161,7 @@
 						</header>
 						<!-- Content -->
 							<section id="content">
+								<img src=<?php echo "'$productImage'"; ?> width="60%" height="60%" alt="" />
 								<?php
 									echo "<h3>$productName</h3><p>$productDescription</p>"
 								?>

@@ -29,6 +29,6 @@
 
 	$conn->close();
 
-	echo json_encode($jarr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+	echo json_encode($jarr);
 
 ?>

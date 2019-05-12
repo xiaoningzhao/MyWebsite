@@ -102,11 +102,13 @@
 									<h3>Services Visited Statistics</h3>
 									<h4>Recent 5 visited pages.</h4>
 									<?php
+									if(isset($_COOKIE['recent_page'])){
 										$page = $_COOKIE['recent_page'];
 										$arr = unserialize($page);
 										foreach($arr as $v){
 											echo $v."<br>";
 										}
+									}
 									?>
 
 									</div>
@@ -115,12 +117,14 @@
 									<h4>Most visited pages</h4>
 
 									<?php
+									if(isset($_COOKIE['page_visits'])){
 										$page_visits = $_COOKIE['page_visits'];
 										$arr_visits = unserialize($page_visits);
 										arsort($arr_visits);
 										foreach($arr_visits as $key => $v){
 											echo $key."  - times visit: ".$v."<br>";
 										}
+									}
 									?>
 									</div>
 									</section>

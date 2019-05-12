@@ -36,7 +36,7 @@
 				</ul>
 			</li>
 			<li><a href="news.php">News</a></li>
-			<li><a href="Login.html">Contacts</a></li>
+			<li><a href="Contacts.php">Contacts</a></li>
 			<li><a href="user.php">User</a></li>
 			<?php 
 				if($session_login==true){

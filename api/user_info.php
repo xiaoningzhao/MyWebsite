@@ -1,8 +1,11 @@
 <?php
-	header('Content-Type: application/json');
-	$query = "SELECT p.productID, p.productName, avg(r.rating) as avg_rating, count(r.rating) as number_rating FROM product p left join review r on r.productID = p.productID GROUP BY p.productID, p.productName";
+	extract($_POST);
 
-	$json_db = file_get_contents('db.json');
+	header('Content-Type: application/json');
+
+	$query = "SELECT userID, first_name, last_name, email, home_address, home_phone, cellphone FROM userinfo WHERE userID = '$userID' and password = '$password'";
+
+	$json_db = file_get_contents('../db.json');
 	$db = json_decode($json_db, true);
 
 	$db_servername = $db['servername'];
@@ -29,6 +32,6 @@
 
 	$conn->close();
 
-	echo json_encode($jarr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+	echo json_encode($jarr);
 
 ?>

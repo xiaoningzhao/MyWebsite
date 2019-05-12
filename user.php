@@ -23,47 +23,9 @@
 					<div class="container">
 						<header class="major">
 							<h2>User</h2>
-							<p>Create or Search user</p>
 						</header>
 
 						<!-- Form -->
-							<section>
-								<h3>Create User</h3>
-								<form method="post" action="CreateUser.php">
-									<div class="row gtr-uniform gtr-50">
-										<div class="col-4 col-12-xsmall">
-											<input type="text" name="first_name" id="first_name" value="" placeholder="*First Name" required/>
-										</div>
-										<div class="col-4 col-12-xsmall">
-											<input type="text" name="last_name" id="last_name" value="" placeholder="*Last Name" required/>
-										</div>
-										<div class="col-4 col-12-xsmall">
-											<input type="email" name="email" id="email" value="" placeholder="Email" />
-										</div>
-										<div class="col-12 col-12-xsmall">
-											<input type="text" name="home_address" id="home_address" value="" placeholder="Home Address" />
-										</div>
-										<div class="col-6 col-12-xsmall">
-											<input type="text" name="home_phone" id="home_phone" value="" placeholder="Home Phone" />
-										</div>
-										<div class="col-6 col-12-xsmall">
-											<input type="text" name="cellphone" id="cellphone" value="" placeholder="Cellphone" />
-										</div>
-										<div class="col-12">
-											<ul class="actions">
-												<li><input type="submit" value="Create" class="primary" /></li>
-												<li><input type="reset" value="Reset" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-							</section>
-
-							* Required field
-
-							<hr />
-
-
 							<section>
 								<h3>Search User</h3>
 								<form method="post" action="SearchUsers.php">

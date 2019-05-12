@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS userinfo (
   password varchar(32) NOT NULL,
   first_name varchar(20) NOT NULL,
   last_name varchar(20) NOT NULL,
-  email varchar(20) DEFAULT NULL,
-  home_address varchar(50) DEFAULT NULL,
+  email varchar(100) DEFAULT NULL,
+  home_address varchar(100) DEFAULT NULL,
   home_phone varchar(15) DEFAULT NULL,
   cellphone varchar(15) DEFAULT NULL,
   PRIMARY KEY (userID)

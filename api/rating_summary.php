@@ -1,6 +1,6 @@
 <?php
 	header('Content-Type: application/json');
-	$query = "SELECT p.productID, p.productName, count(ph.productID) AS Visit FROM product p LEFT JOIN product_access_history ph ON p.productID = ph.productID GROUP BY p.productID, p.productName ORDER BY Visit DESC";
+	$query = "SELECT p.productID, p.productName, avg(r.rating) as avg_rating, count(r.rating) as number_rating FROM product p left join review r on r.productID = p.productID GROUP BY p.productID, p.productName";
 
 	$json_db = file_get_contents('../db.json');
 	$db = json_decode($json_db, true);
